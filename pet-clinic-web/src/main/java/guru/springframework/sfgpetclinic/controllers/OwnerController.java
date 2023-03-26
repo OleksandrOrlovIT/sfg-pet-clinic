@@ -26,7 +26,7 @@ public class OwnerController {
 
     @InitBinder
     public void setAllowedFields(WebDataBinder dataBinder){
-        dataBinder.setAllowedFields("id");
+        dataBinder.setDisallowedFields("id");
     }
 
     @RequestMapping("/find")
@@ -35,7 +35,7 @@ public class OwnerController {
         return "owners/findOwners";
     }
 
-    @GetMapping
+    @GetMapping()
     public String processFindForm(Owner owner, BindingResult result, Model model){
         if(owner.getLastName() == null){
             owner.setLastName("");
